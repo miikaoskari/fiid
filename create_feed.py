@@ -1,4 +1,5 @@
 import json
+import os
 from feedparser import parse
 from jinja2 import Template
 
@@ -39,5 +40,8 @@ if __name__ == "__main__":
 
     html = create_html(contents)
 
-    with open("output.html", "w") as f:
+    outdir = "output"
+    os.makedirs(outdir, exist_ok=True)
+    with open(os.path.join(outdir, "index.html"), "w") as f:
+
         f.write(html)
